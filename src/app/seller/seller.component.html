@@ -1,0 +1,39 @@
+<div class="col container">
+    <div class="row">
+        <div class="col-4">
+            <label for="SellerId">Seller Id</label>
+            <input type="number" [(ngModel)]="sellerId" class="form-control" id="SellerId"
+                placeholder="Enter seller's Id" required />
+            <small id="SellerId" class="form-text text-muted">Id must be a number.</small>
+        </div>
+
+        <div class="col-3">
+            <label for="dateStart">from</label>
+            <input type="date" required [(ngModel)]="dateStart" class="form-control" id="dateStart"
+                placeholder="Enter seller's Id" />
+            <small id="dateStart" class="form-text text-muted">required.</small>
+        </div>
+
+        <div class="col-3">
+            <label for="dateEnd">to</label>
+            <input type="date" required [(ngModel)]="dateEnd" class="form-control" id="dateEnd"
+                placeholder="Enter seller's Id" />
+            <small id="dateEnd" class="form-text text-muted">required.</small>
+        </div>
+
+        <div class="col mt-4">
+            <button (click)="onSearch()" type="submit" class="btn btn-light form-control">
+                Finde
+            </button>
+        </div>
+    </div>
+    <!-- multi -->
+    <div class="row" *ngIf="multi; else emptyData">
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi" (select)="onSelect($event)"
+            (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+        </ngx-charts-line-chart>
+    </div>
+    <ng-template #emptyData> There's No transations. </ng-template>
+</div>

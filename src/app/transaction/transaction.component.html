@@ -1,0 +1,116 @@
+<div class="example-form" class="mt-5">
+  <div class="row full-size d-flex justify-content-center">
+    <div class="data_container">
+      <div class="row form-group">
+        <div class="col-12">
+          <label for="SellerId">Seller Id</label>
+          <input
+            type="number"
+            [(ngModel)]="sellerId"
+            class="form-control"
+            id="SellerId"
+            placeholder="Enter seller's Id"
+            required
+          />
+          <small id="SellerId" class="form-text text-muted"
+            >Id must be a number.</small
+          >
+        </div>
+
+        <div class="col-6">
+          <label for="dateStart">from</label>
+          <input
+            type="date"
+            required
+            [(ngModel)]="dateStart"
+            class="form-control"
+            id="dateStart"
+            placeholder="Enter seller's Id"
+          />
+          <small id="dateStart" class="form-text text-muted">required.</small>
+        </div>
+
+        <div class="col-6">
+          <label for="dateEnd">to</label>
+          <input
+            type="date"
+            required
+            [(ngModel)]="dateEnd"
+            class="form-control"
+            id="dateEnd"
+            placeholder="Enter seller's Id"
+          />
+          <small id="dateEnd" class="form-text text-muted">required.</small>
+        </div>
+
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">
+              <label for="page" class="form-label">page</label>
+              <input
+                type="number"
+                [(ngModel)]="page"
+                class="form-control"
+                id="page"
+                required
+              />
+              <small id="page" class="form-text text-muted">required.</small>
+            </div>
+
+            <div class="col-6">
+              <label for="perPage" class="form-label">per page</label>
+              <input
+                type="number"
+                [(ngModel)]="perPage"
+                class="form-control"
+                id="perPage"
+                required
+              />
+              <small id="perPage" class="form-text text-muted">required.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto mt-2">
+          <div class="row d-grid gap-2 mx-auto mt-3">
+            <button
+              (click)="onSearch()"
+              type="submit"
+              class="btn btn-light form-control"
+            >
+              Finde
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="data != undefined">
+        <div *ngIf="data.data.transactions.length > 0; else emptyData">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">image</th>
+                <th scope="col">price</th>
+                <th scope="col">last_updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of data.data.transactions; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ t.id }}</td>
+                <td>{{ t.title }}</td>
+                <td>{{ t.image }}</td>
+                <td>{{ t.price }}</td>
+                <td>{{ t.last_updated }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #emptyData> There's No transations. </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

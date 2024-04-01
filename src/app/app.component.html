@@ -1,0 +1,13 @@
+<mat-toolbar class="bg-info text-white">
+  <div class="col-8">
+    <span>EASYKASH</span>
+  </div>
+  <div class="col-4">
+    <div class="space-around">
+      <button mat-button [routerLink]="['../transactions']">Transaction</button>
+      <button mat-button [routerLink]="['../sellersummery']">Sales summary</button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
